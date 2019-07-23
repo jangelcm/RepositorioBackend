@@ -1,0 +1,354 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">       
+          <ngb-tabset>
+          
+           
+            <ngb-tab title="Table Table">
+                <ng-template ngbTabContent>
+                        <div class="row">
+                                <div class="col-12 m-t-30">                       
+                                    <div class="card">
+
+                                        <div class="card-header">
+                                            
+                                            Table Table
+                                        </div>
+                                        <table>
+                                          <thead>
+                                              <th>Id Table</th>
+                                              <th>Descripcion</th>
+                                              <th>Descripcion 1 </th>
+                                              <th>Descripcion  </th>
+                                              <th>Descripcion 2 </th>
+                                              <th>Descripcion  </th>
+                                              <th>Descripcion 3 </th>
+                                              <th>Descripcion  </th>
+                                             
+                                          </thead>
+                                          <tbody>
+                                              
+                                              <tr *ngFor="let table of techTable">
+                                               
+                                                  <td>{{table.tableId}}</td>
+                                                  <td>{{table.descripcion}}</td>
+                                                  <td>{{table.descripcionNroUno}}</td>
+                                                  <td>{{table.descripcionUno}}</td>
+                                                  
+                                                  
+                                                  
+                                                  <td>{{table.descripcionNroDos}}</td>
+                                                  <td>{{table.descripcionDos}}</td>
+                                                 
+                                                  <td>{{table.descripcionNroTres}}</td>
+                                                  <td>{{table.descripcionTres}}</td>
+                                                  
+                                                  <td>
+                                                        <button type="button" class="btn btn-info btn-rounded" (click)="open(contentEditTable,table.tableId)">
+                                                                <i class="fa fa-edit"></i> Edit</button>
+                                                  </td>
+                                                  <td>
+                                                    <button type="button" class="btn btn-info btn-rounded" (click)="openDetalle(contentVer,table.tableId)">
+                                                            <i class="fa fa-eye"></i> Ver</button>
+                                              </td>
+                                                  
+                                                  
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                               
+                        </div>
+                </ng-template>
+                <ng-template #contentEditTable  let-c="close" let-d="dismiss" >
+                    <div class="modal-header">
+                        <h4 class="modal-title">Mantenimiento Table</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                                <div class="col-12 m-t-30">                       
+                                            <div class="card">                                                                
+                                                <div class="conteiner">
+                                                    <form [formGroup]="updateTableForm" (ngSubmit)="onSubmit()" >
+                                                        <div>
+                                                            <div class="form-group row" >
+                                                     
+                                                    
+                                                                <label for="example-text-input" class="col-4 col-form-label">Table Id</label>
+                                                                <div class="col-8">
+                                                                    <input type="text" id="txtTableId" class="form-control" formControlName="tableId" [(ngModel)]="updateTable.tableId"  
+                                                                    name="updateTable.tableId"   [ngClass]="{ 'is-invalid': subInsert && f.tableId.errors }">
+                                                                    <div *ngIf="subInsert && f.tableId.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.tableId.errors.required">Table Id es un dato requerido.</div>
+                                                                    </div>
+                                                                 </div>
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion </label>
+                                                                 <div class="col-8">
+                                                                     <input type="text" id="txtDescripcion" class="form-control" formControlName="descripcion" [(ngModel)]="updateTable.descripcion"
+                                                                      name="updateTable.descripcion"  [ngClass]="{ 'is-invalid': subUpd && f.descripcion.errors }" >
+                                                                     <div *ngIf="subUpd && f.descripcion.errors" class="invalid-feedback">
+                                                                         <div *ngIf="f.descripcion.errors.required">Descripcion es un dato requerido.</div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion 1</label>
+                                                                 <div class="col-8">
+                                                                     <input type="text" id="txtdescripcionNroUno" class="form-control" formControlName="descripcionNroUno" [(ngModel)]="updateTable.descripcionNroUno"
+                                                                      name="updateTable.descripcionNroUno"  [ngClass]="{ 'is-invalid': subUpd && f.descripcionNroUno.errors }" >
+                                                                     <div *ngIf="subUpd && f.descripcionNroUno.errors" class="invalid-feedback">
+                                                                         <div *ngIf="f.descripcionNroUno.errors.required">Descripcion es un dato requerido.</div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 1</label>
+                                                                 <div class="col-8">
+                                                                    <input type="text"  id="txtDescripcionUno" class="form-control" formControlName="descripcionUno" [(ngModel)]="updateTable.descripcionUno" 
+                                                                    name="updateTable.descripcionUno" [ngClass]="{ 'is-invalid': subUpd && f.descripcionUno.errors }"  >
+                                                                    <div *ngIf="subUpd && f.descripcionUno.errors" class="invalid-feedback">
+                                                                         <div *ngIf="f.descripcionUno.errors.required">descripcion Uno es un dato requerido.</div>
+                                                                     </div>
+                                                                 </div>
+                                                                 
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion 2</label>
+                                                                 <div class="col-8">
+                                                                   <input type="text"  id="txtdescripcionNroDos" class="form-control" formControlName="descripcionNroDos" [(ngModel)]="updateTable.descripcionNroDos" 
+                                                                   name="updateTable.descripcionNroDos"  [ngClass]="{ 'is-invalid': subUpd && f.descripcionNroDos.errors }">
+                                                                     <div *ngIf="subUpd && f.descripcionNroDos.errors" class="invalid-feedback">
+                                                                         <div *ngIf="f.descripcionNroDos.errors.required">Descripcion sub 2 es un dato requerido.</div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 2</label>
+                                                                 <div class="col-8">
+                                                                   <input type="text"  id="txtdescripcionDos" class="form-control" formControlName="descripcionDos" [(ngModel)]="updateTable.descripcionDos" 
+                                                                   name="updateTable.descripcionDos"  [ngClass]="{ 'is-invalid': subUpd && f.descripcionDos.errors }">
+                                                                     <div *ngIf="subUpd && f.descripcionDos.errors" class="invalid-feedback">
+                                                                         <div *ngIf="f.descripcionDos.errors.required">Descripcion 2 es un dato requerido.</div>
+                                                                     </div>
+                                                                 </div>
+                                                                
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion 3</label>
+                                                                 <div class="col-8">
+                                                                    <input type="text"  id="txtdescripcionNroTres" class="form-control" formControlName="descripcionNroTres" [(ngModel)]="updateTable.descripcionNroTres" 
+                                                                    name="updateTable.descripcionNroTres"  [ngClass]="{ 'is-invalid': subUpd && f.descripcionNroTres.errors }">
+                                                                      <div *ngIf="subUpd && f.descripcionNroTres.errors" class="invalid-feedback">
+                                                                          <div *ngIf="f.descripcionNroTres.errors.required">Descripcion sub 3 es un dato requerido.</div>
+                                                                      </div>
+                                                                  </div>
+                                                                 <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 3</label>
+                                                                 
+                                                                   <div class="col-8">
+                                                                    <input type="text"  id="txtdescripcionTres" class="form-control" formControlName="descripcionTres" [(ngModel)]="updateTable.descripcionTres" 
+                                                                    name="updateTable.descripcionTres"  [ngClass]="{ 'is-invalid': subUpd && f.descripcionTres.errors }">
+                                                                      <div *ngIf="subUpd && f.descripcionTres.errors" class="invalid-feedback">
+                                                                          <div *ngIf="f.descripcionTres.errors.required">Descripcion 3 es un dato requerido.</div>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="col-12" *ngIf="respUpd">
+                                                                  <div class="col-xs-12">
+                                                                   <p class="alert alert-success"> {{respuesta}}     </p>
+                                                                  </div>
+                                                                  </div>
+            
+                                                               
+                                                             </div>                                            
+                                                           
+                                                        </div>                                     
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                </div>
+                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-inverse" (click)="guardar()">Guardar</button>
+                    </div>
+           </ng-template>
+
+           <ng-template #contentVer  let-c="close" let-d="dismiss" >
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalle Table</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                            <div class="col-12 m-t-30">                       
+                                        <div class="card">                                                                
+                                            <div class="conteiner">
+                                                <form  >
+                                                   
+                                                        <div class="form-group row" >
+                                                            
+                                                                <table>
+                                                                        <thead>
+                                                                            <th>Id Detalle</th>
+                                                                            <th>Descripcion</th>
+                                                                            <th>Created Date  </th>
+                                                                            <th>Created By </th>
+                                                                            <th>Id Table</th>
+                                                                           
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            
+                                                                            <tr *ngFor="let table of TableDetalle">
+                                                                                <td>{{table.tableDetId}}</td>
+                                                                                
+                                                                                <td>{{table.descripcion}}</td>
+                                                                                <td>{{table.createdDate | date:'dd/MM/yyyy'}}</td>
+                                                                                <td>{{table.createdBy}}</td>
+                                                                                
+                                                                                <td>{{table.tableId}}</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                                          
+                                                       
+                                                        </div>                                     
+                                                </form>
+                                            </div>
+                                        </div>
+
+                            </div>
+                     </div>
+                </div>
+                
+       </ng-template>
+
+                                   
+            </ngb-tab>
+                               
+                   
+            <ngb-tab title="Insert Table">
+                    <ng-template ngbTabContent>
+                         <div class="row">
+                             <div class="col-12 m-t-30">                       
+                                 <div class="card">
+                                     <div class="card-header">
+                                         Ingresar 
+                                     </div>
+                                     <div class="conteiner">
+                                        <form [formGroup]="insertTableForm" (ngSubmit)="onSubmit()" >
+                                             <div >
+                                                 <div class="form-group row" >
+                                                     
+                                                    
+                                                    <label for="example-text-input" class="col-4 col-form-label">Table Id</label>
+                                                    <div class="col-8">
+                                                        <input type="text" id="txtTableId" class="form-control" formControlName="tableId" [(ngModel)]="insertTable.tableId"  
+                                                        name="insertTable.tableId"   [ngClass]="{ 'is-invalid': subInsert && i.tableId.errors }">
+                                                        <div *ngIf="subInsert && i.tableId.errors" class="invalid-feedback">
+                                                            <div *ngIf="i.tableId.errors.required">Table Id es un dato requerido.</div>
+                                                        </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion </label>
+                                                     <div class="col-8">
+                                                         <input type="text" id="txtDescripcion" class="form-control" formControlName="descripcion" [(ngModel)]="insertTable.descripcion"
+                                                          name="insertTable.descripcion"  [ngClass]="{ 'is-invalid': subInsert && i.descripcion.errors }" >
+                                                         <div *ngIf="subInsert && i.descripcion.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcion.errors.required">Descripcion es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion 1</label>
+                                                     <div class="col-8">
+                                                        <input type="text"  id="txtDescripcionUno" class="form-control" formControlName="descripcionUno" [(ngModel)]="insertTable.descripcionUno" 
+                                                        name="insertTable.descripcionUno" [ngClass]="{ 'is-invalid': subInsert && i.descripcionUno.errors }"  >
+                                                        <div *ngIf="subInsert && i.descripcionUno.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcionUno.errors.required">descripcion Uno es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 1</label>
+                                                     <div class="col-8">
+                                                         <input type="text" id="txtdescripcionNroUno" class="form-control" formControlName="descripcionNroUno" [(ngModel)]="insertTable.descripcionNroUno"
+                                                          name="insertTable.descripcionNroUno"  [ngClass]="{ 'is-invalid': subInsert && i.descripcionNroUno.errors }" >
+                                                         <div *ngIf="subInsert && i.descripcionNroUno.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcionNroUno.errors.required">Descripcion es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion 2</label>
+                                                     <div class="col-8">
+                                                       <input type="text"  id="txtdescripcionDos" class="form-control" formControlName="descripcionDos" [(ngModel)]="insertTable.descripcionDos" 
+                                                       name="insertTable.descripcionDos"  [ngClass]="{ 'is-invalid': subInsert && i.descripcionDos.errors }">
+                                                         <div *ngIf="subInsert && i.descripcionDos.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcionDos.errors.required">Descripcion 2 es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 2</label>
+                                                     <div class="col-8">
+                                                       <input type="text"  id="txtdescripcionNroDos" class="form-control" formControlName="descripcionNroDos" [(ngModel)]="insertTable.descripcionNroDos" 
+                                                       name="insertTable.descripcionNroDos"  [ngClass]="{ 'is-invalid': subInsert && i.descripcionNroDos.errors }">
+                                                         <div *ngIf="subInsert && i.descripcionNroDos.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcionNroDos.errors.required">Descripcion sub 2 es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion 3</label>
+                                                     <div class="col-8">
+                                                       <input type="text"  id="txtdescripcionTres" class="form-control" formControlName="descripcionTres" [(ngModel)]="insertTable.descripcionTres" 
+                                                       name="insertTable.descripcionTres"  [ngClass]="{ 'is-invalid': subInsert && i.descripcionTres.errors }">
+                                                         <div *ngIf="subInsert && i.descripcionTres.errors" class="invalid-feedback">
+                                                             <div *ngIf="i.descripcionTres.errors.required">Descripcion 3 es un dato requerido.</div>
+                                                         </div>
+                                                     </div>
+                                                     <label for="example-text-input" class="col-4 col-form-label">Descripcion sub 3</label>
+                                                     <div class="col-8">
+                                                         <input type="text"  id="txtdescripcionNroTres" class="form-control" formControlName="descripcionNroTres" [(ngModel)]="insertTable.descripcionNroTres" 
+                                                         name="insertTable.descripcionNroTres"  [ngClass]="{ 'is-invalid': subInsert && i.descripcionNroTres.errors }">
+                                                           <div *ngIf="subInsert && i.descripcionNroTres.errors" class="invalid-feedback">
+                                                               <div *ngIf="i.descripcionNroTres.errors.required">Descripcion sub 3 es un dato requerido.</div>
+                                                           </div>
+                                                       </div>
+                                                       <label for="example-text-input" class="col-4 col-form-label">created Date</label>
+                                                       <div class="col-8">
+                                                           <div class="input-group">
+                                                               <input type="text" id="txtcreatedDate" class="form-control"  formControlName="createdDate"  [(ngModel)]="modalDate" ngbDatepicker #g="ngbDatepicker"  
+                                                               name="dp"  [ngClass]="{ 'is-invalid': subInsert && i.createdDate.errors }">
+                                                              
+                                                               <div class="input-group-append">
+                                                                    <button class="btn btn-outline-secondary" (click)="g.toggle()" type="button">
+                                                                     <i class="ti-calendar"></i>
+                                                                </button>
+                                                        </div>
+                                                           </div>
+
+                                                       </div>
+                                                       <label for="example-text-input" class="col-4 col-form-label">created By</label>
+                                                       <div class="col-8">
+                                                           <input type="text"  id="txtcreatedBy" class="form-control" formControlName="createdBy" [(ngModel)]="insertTable.createdBy " 
+                                                           name="insertTable.createdBy"  [ngClass]="{ 'is-invalid': subInsert && i.createdBy.errors }">
+                                                             <div *ngIf="subInsert && i.createdBy.errors" class="invalid-feedback">
+                                                                 <div *ngIf="i.createdBy.errors.required">Creador por  es un dato requerido.</div>
+                                                             </div>
+                                                         </div>
+                                                      
+                                                         
+                                                       <div class="col-12" *ngIf="respInser">
+                                                       <div class="col-xs-12">
+                                                       <p class="alert alert-success"> {{respuesta}}     </p>
+                                                       </div>
+                                                       </div>
+
+                                                   
+                                                 </div>                                          
+                                                 
+                                             </div>                                     
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div>
+                         <button type="button" class="btn btn-info btn-rounded" (click)="insertar()">Insertar</button>
+                         </div>
+                    </ng-template>
+                               </ngb-tab>
+
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
