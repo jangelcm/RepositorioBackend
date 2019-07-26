@@ -1,2 +1,0 @@
-# selfserviceauth
-selfservice authentication backend
