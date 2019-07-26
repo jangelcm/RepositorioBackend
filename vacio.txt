@@ -1,4 +1,4 @@
-Esta es la historia de tom, practicante de sistemas 
+﻿Esta es la historia de tom, practicante de sistemas 
 con 20 a�os y anhela convertirse en hokage.
 
 Tiene 2 gatos, y odia a los perros 
@@ -9,3 +9,4 @@ y hoy no vino al trabajo
 porque estuvo enfermo
 
 cuñao le gusta los H
+y un poco las M
