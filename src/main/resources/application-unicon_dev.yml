@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: unicon-auth-server
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.1.101:1521:TECHDB
+    username: TECHSOFT
+    password: TECHSOFT
+
+app:
+  security:
+    browser-client-name: browser_client_teach
+    browser-client-secret: teach_people2019
+    jwt:
+      access-token-duration: 86400
+      refresh-token-duration: 86400
+      signing-key: 123dsdfdf23123
+
+logging:
+  level:
+    pe.com.targethr: DEBUG
+    #org.hibernate: DEBUG

@@ -1,0 +1,17 @@
+server:
+  compression:
+    enabled: true
+    mime-types:
+    - application/json
+    - application/xml
+  port: 8081
+
+spring:
+  datasource:
+    generate-unique-name: true
+  jmx:
+    default-domain: jmx_${random.long}
+    unique-names: true
+  profiles:
+    active:
+    - unicon_dev
